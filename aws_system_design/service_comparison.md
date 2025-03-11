@@ -252,3 +252,45 @@ This document provides a comprehensive comparison between various AWS services c
 - Mobile and web applications requiring GraphQL
 - When you need subscriptions and real-time updates
 - When you want to combine data from multiple sources
+
+## ETL and Data Processing Services
+
+### Glue vs EMR vs Data Pipeline vs Kinesis Data Firehose
+
+| Feature | AWS Glue | Amazon EMR | AWS Data Pipeline | Kinesis Data Firehose |
+|---------|----------|------------|-------------------|------------------------|
+| **Type** | Serverless ETL service | Managed big data platform | Orchestration service | Real-time data delivery service |
+| **Use Cases** | Data cataloging, ETL jobs | Big data processing, analytics | Complex data processing workflows | Real-time ETL for streaming data |
+| **Processing Model** | Batch, streaming (Glue Streaming) | Batch, streaming (Spark Streaming) | Batch | Streaming |
+| **Runtime** | Apache Spark | Hadoop ecosystem (Spark, Hive, etc.) | EC2, EMR | Serverless |
+| **Management Overhead** | Low (serverless) | Medium to high | Medium | Low (serverless) |
+| **Scaling** | Automatic | Manual or automatic | Based on instance types | Automatic |
+| **Development** | Visual ETL, Scala, Python | Spark, Hive, Pig, etc. | JSON pipeline definitions | Configuration-based |
+| **Cost Model** | Pay per second of execution | Pay for cluster uptime | Pay for resources used | Pay for data volume |
+
+**When to choose AWS Glue:**
+- Serverless ETL jobs on structured or semi-structured data
+- Data discovery and cataloging needs
+- When you prefer minimal infrastructure management
+- Code generation for ETL tasks
+- When tight integration with S3, Redshift, and RDS is needed
+
+**When to choose Amazon EMR:**
+- Complex big data processing requiring custom applications
+- When you need specific Hadoop ecosystem tools
+- Machine learning workloads on large datasets
+- When you need fine-grained control over the cluster
+- Cost-optimization with spot instances for large workloads
+
+**When to choose AWS Data Pipeline:**
+- Complex dependencies between data processing activities
+- Data movement between different AWS services and on-premises
+- Scheduled, repeating workflows
+- When you need built-in scheduling and retry logic
+
+**When to choose Kinesis Data Firehose:**
+- Real-time ETL on streaming data
+- Continuous data ingestion into S3, Redshift, Elasticsearch, Splunk
+- Log and event data processing
+- IoT data ingestion
+- When you need real-time data transformation with Lambda
